@@ -1,0 +1,20 @@
+<%- include('partial/header'); %>
+    
+        <h1>Game List: </h1>
+
+    <div class="row">
+        <% for (var i = 0 ; i < games.length; i++ ) { %>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="images/game.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                <h5 class="card-title">Game: <%= games[i].title %></h5>
+                <p class="card-text">Creator: <%= games[i].creator %></p>
+                <a href="/game/<%= games[i].title %>/<%= games[i].creator %>" class="btn btn-primary">Play</a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+<%- include('partial/footer'); %>

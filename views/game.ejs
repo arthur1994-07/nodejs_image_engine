@@ -1,0 +1,12 @@
+<%- include('partial/header'); %>
+
+
+        <h1 style="padding-top: 65px">Game Title: <%= title %></h1>
+        <% if (title == "League of Legends") { %>
+            <p>Description: League of Legends is a MOBA game developed by Riot Games in 2010.It is a super toxic game which can cause cancer to players...</p>
+        <% } else { %>
+            <p>No description...</p>
+        <% } %>
+        <h2>Game Author: <%= author %></h2>
+        <h3>Development Year: <%= year %></h3>
+<%- include('partial/footer'); %>

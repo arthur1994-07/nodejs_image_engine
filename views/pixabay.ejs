@@ -1,0 +1,19 @@
+<%- include('partial/header'); %>    
+<!-- <h1>searched: <%=searchterm%></h1> -->
+<h1>Image search <%= pageNumber %></h1>
+<div class="row">
+    <% for(var i = 0; i<picData.hits.length; i++) { %>
+
+    <div style="border: 2px solid blue; width: 300px; color: rgb(107, 95, 160); overflow-x: hidden;
+    background-color: <%= picData.hits[i].color %>">
+        <img src ="<%= picData.hits[i].largeImageURL%>" style="width: 250px; height: 250px;"/>
+        <p>Image ID: <%=picData.hits[i].id %></p>
+        <p>Tags: <%=picData.hits[i].tags%></p>
+        <p>Preview: <%=picData.hits[i].previewURL%></p>
+        <p>Source: Pixabay</p>
+    </div>
+    <% } %>
+</div>
+
+
+<%- include('partial/footer'); %>

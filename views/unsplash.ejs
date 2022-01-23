@@ -1,0 +1,21 @@
+<%- include('partial/header'); %>    
+<!-- <h1>searched: <%=searchterm%></h1> -->
+<h1>Image search<%= pageNumber %></h1>
+<div class="row">
+    <% for(var i = 0; i<picData.results.length; i++) { %>
+
+    <div style="border: 2px solid red; width: 205px; color: rgb(107, 95, 160); white-space: initial;
+    background-color: <%= picData.results[i].color %>"> 
+        <img src ="<%= picData.results[i].urls.small%>" style="width: 180px; height: 200px;"/>
+        <p>Image ID: <%=picData.results[i].id %></p>
+        <p>Title: <%=picData.results[i].description%></p>
+        <p>Preview: <%=picData.results[i].user.portfolio_url%></p>
+        <p>Tags: <%= picData.results[i].tags[0].title%></p>
+        <p>Source: Unsplash</p>
+    </div>
+    <% } %>
+</div>
+<!-- <button action="/pictures?searchterm=<%=searchterm%>&page=<%=pageNumber-1%>" type= "submit" class="btn btn-primary">previous</button>
+<button action=/pictures type="submit" class="btn btn-primary">next</button> -->
+
+<%- include('partial/footer'); %>

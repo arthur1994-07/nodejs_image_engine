@@ -1,0 +1,12 @@
+<%- include('partial/header'); %>    
+
+<h1>Enter your input to search:</h1>
+<form action="/pixabay">
+    <div class="mb-3" method="GET">
+      <label for="exampleInputEmail1" class="form-label">Search:</label>
+      <input type="text" class="form-control" placeholder="Example: water" name="searchterm">
+    </div>
+    <button type="submit" class="btn btn-primary" >Search</button>
+  </form>
+
+<%- include('partial/footer'); %>
