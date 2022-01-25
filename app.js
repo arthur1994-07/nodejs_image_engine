@@ -50,17 +50,13 @@ app.get("/list", (req, res) => {
 })
 
 
-function incrementPage() {
-
-}
-
 // image search unsplash API
 app.get("/unsplash", (req, res) => {
     var searchTerm = req.query.searchterm;
     var currentPage = req.query.page;
     console.log(searchTerm);
     var url = "https://api.unsplash.com/search/photos?client_id=SZOLItfHnhRLcZ5nOEjAQLVCquHux6H88dY-g3jRxec&query=";
-    request(url + searchTerm + "&page=" + currentPage, (error, response, body) => {
+    const unsplashRequest = request(url + searchTerm + "&page=" + currentPage, (error, response, body) => {
         if (error) {
             console.log("Error!!!!!!");
         } else {
@@ -71,7 +67,6 @@ app.get("/unsplash", (req, res) => {
             });
         } 
     })
-    
 });
 
 // image search Pixabay API
@@ -80,7 +75,7 @@ app.get("/pixabay", (req, res) => {
     var currentPage = req.query.page;
     console.log(searchTerm);
     var url = "https://pixabay.com/api/?key=25371850-57bead953a2128cdae909b4d5&q="
-    request(url + searchTerm + "&page=" + currentPage, (error, response, body) => {
+    const pixabayRequest = request(url + searchTerm + "&page=" + currentPage, (error, response, body) => {
         if (error) {
             console.log("Error!!!!!!");
         } else {
@@ -91,47 +86,24 @@ app.get("/pixabay", (req, res) => {
             });
         } 
     })
+    
 });
 
-// image search combined API
-// app.get("/images", (req, res) => {
-//     var searchTerm = req.query.searchterm;
-//     var currentPage = req.query.page;
-//     console.log(searchTerm);
-//     var unsplashURL = "https://api.unsplash.com/search/photos?client_id=SZOLItfHnhRLcZ5nOEjAQLVCquHux6H88dY-g3jRxec&query=";
-//     var pixabayURL = "https://pixabay.com/api/?key=25371850-57bead953a2128cdae909b4d5&q=";
-//     request(unsplashURL + searchTerm + "&page=" + currentPage, (error, response, body) => {
-//         if (error) {
-//             console.log("Error!!!!!!");
-//         } else {
-//             res.render("images", { 
-//                 picData: JSON.parse(body),
-//                 pageNumber: currentPage,
-//                 searchterm: searchTerm
-//             });
-//         } 
-//     });
-//     request(pixabayURL + searchTerm + "&page=" + currentPage, (error, response, body) => {
-//         if (error) {
-//             console.log("Error!!!!!!");
-//         } else {
-//             res.render("image", { 
-//                 picData: JSON.parse(body),
-//                 pageNumber: currentPage,
-//                 searchterm: searchTerm
-//             });
-//         } 
-//     });
-// });
-
-
-
-app.get("/search", (req, res) => {
-    res.render("search");
+app.get("/pixabaySearch", (req, res) => {
+    res.render("pixabaySearch");
 });
 
-app.listen("3000", () => {
-    console.log("listen function");
+app.get("/unsplashSearch", (req, res) => {
+    res.render("unsplashSearch");
+});
+
+
+
+
+var server = app.listen("3000", () => {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("listen function: "+ host+" "+port);
 });
 
 
